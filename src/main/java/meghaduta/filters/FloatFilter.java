@@ -1,11 +1,8 @@
-package meghaduta.models.filters;
+package meghaduta.filters;
 
 import meghaduta.models.Item;
 import meghaduta.models.Operator;
 
-/**
- * Created by salaikumar on 19/9/15.
- */
 public class FloatFilter extends AbstractFilter<Float> {
 
     protected FloatFilter(String attribute, Operator operator, Float filterValue, Subscription subscription) {
