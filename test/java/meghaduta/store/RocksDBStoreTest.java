@@ -2,7 +2,7 @@ package meghaduta.store;
 
 import meghaduta.models.Event;
 import meghaduta.models.Item;
-import meghaduta.models.config.MDConfig;
+import meghaduta.config.MDConfig;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
