@@ -1,4 +1,4 @@
-package meghaduta.storm.store;
+package meghaduta.store;
 
 import meghaduta.models.Event;
 import meghaduta.models.Item;
