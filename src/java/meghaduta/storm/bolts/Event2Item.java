@@ -8,18 +8,19 @@ import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
 import in.ashwanthkumar.utils.collections.Lists;
 import meghaduta.models.Event;
+import meghaduta.models.Item;
 import meghaduta.store.Store;
 
 import java.util.Map;
 
-/***
- * Takes an Event and persists it to a Store
+/**
+ * Takes an Event and converts it to an Item, uses Store reference to do that.
  */
-public class StateWriter extends BaseRichBolt {
+public class Event2Item extends BaseRichBolt {
     Store store;
     OutputCollector collector;
 
-    public StateWriter(Store store) {
+    public Event2Item(Store store) {
         this.store = store;
     }
 
@@ -30,12 +31,16 @@ public class StateWriter extends BaseRichBolt {
 
     @Override
     public void execute(Tuple tuple) {
-        Event event = (Event) tuple.getValue(0);
-        collector.emit(Lists.<Object>of(event));
+        try {
+            Event event = (Event) tuple.getValue(0);
+            Item item = store.get(event.getItemId());
+            collector.emit(Lists.<Object>of(item));
+        } catch (Exception ignored) {
+        }
     }
 
     @Override
     public void declareOutputFields(OutputFieldsDeclarer outputFieldsDeclarer) {
-        outputFieldsDeclarer.declare(new Fields("event"));
+        outputFieldsDeclarer.declare(new Fields("item"));
     }
 }
