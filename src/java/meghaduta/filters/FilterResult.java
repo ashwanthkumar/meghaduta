@@ -1,4 +1,4 @@
-package meghaduta.models.filters;
+package meghaduta.filters;
 
 import meghaduta.models.Subscription;
 

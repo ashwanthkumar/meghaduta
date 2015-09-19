@@ -1,4 +1,4 @@
-package meghaduta.models.config;
+package meghaduta.config;
 
 public class MDConfig {
     // Store related Config

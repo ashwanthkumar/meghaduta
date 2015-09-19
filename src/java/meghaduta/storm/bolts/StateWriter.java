@@ -1,4 +1,4 @@
-package meghaduta.models.storm.bolts;
+package meghaduta.storm.bolts;
 
 import backtype.storm.task.OutputCollector;
 import backtype.storm.task.TopologyContext;
@@ -8,12 +8,13 @@ import backtype.storm.tuple.Tuple;
 
 import java.util.Map;
 
-/**
- * Parses a string as CSV and emits Event model
+/***
+ * Takes an Event and persists it to a Store
  */
-public class LineProcessor extends BaseRichBolt {
+public class StateWriter extends BaseRichBolt {
     @Override
     public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) {
+
     }
 
     @Override

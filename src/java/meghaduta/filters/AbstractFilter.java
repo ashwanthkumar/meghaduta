@@ -1,4 +1,4 @@
-package meghaduta.models.filters;
+package meghaduta.filters;
 
 abstract public class AbstractFilter implements Filter {
     @Override

@@ -1,4 +1,4 @@
-package meghaduta.models.storm.store;
+package meghaduta.storm.store;
 
 import meghaduta.models.Event;
 import meghaduta.models.Item;
@@ -6,7 +6,6 @@ import meghaduta.models.config.MDConfig;
 import org.apache.commons.lang.StringUtils;
 import org.rocksdb.RocksDB;
 import org.rocksdb.RocksIterator;
-import org.rocksdb.WriteOptions;
 
 import java.util.HashMap;
 import java.util.Map;

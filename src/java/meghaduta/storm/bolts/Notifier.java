@@ -1,4 +1,4 @@
-package meghaduta.models.storm.bolts;
+package meghaduta.storm.bolts;
 
 import backtype.storm.task.OutputCollector;
 import backtype.storm.task.TopologyContext;

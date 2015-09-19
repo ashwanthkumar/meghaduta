@@ -1,4 +1,4 @@
-package meghaduta.models.storm.notifier;
+package meghaduta.storm.notifier;
 
 import meghaduta.models.Event;
 
