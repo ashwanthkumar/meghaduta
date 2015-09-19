@@ -1,6 +1,4 @@
-# Meghaduta
-
-## Problem Statement - Large scale configurable notification system
+# Meghaduta - Large scale configurable notification system
 ### Problem Description
 The goal is to build a configurable notification system, which receives inputs in a CSV file and notifies its subscribers based on the condition set.
 
