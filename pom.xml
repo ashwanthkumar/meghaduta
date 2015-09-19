@@ -33,6 +33,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.rocksdb</groupId>
+            <artifactId>rocksdbjni</artifactId>
+            <version>3.10.1</version>
+        </dependency>
+
+        <dependency>
             <groupId>in.ashwanthkumar</groupId>
             <artifactId>my-java-utils</artifactId>
             <version>0.0.6</version>
@@ -62,6 +68,14 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Maven Central</name>
+            <url>https://repo1.maven.org/maven2</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
