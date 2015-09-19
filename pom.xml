@@ -71,7 +71,7 @@
 
     <repositories>
         <repository>
-            <id>central</id>
+            <id>repo-central</id>
             <name>Maven Central</name>
             <url>https://repo1.maven.org/maven2</url>
         </repository>
