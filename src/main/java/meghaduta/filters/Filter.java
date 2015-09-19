@@ -3,9 +3,7 @@ package meghaduta.filters;
 import meghaduta.models.Item;
 
 public interface Filter {
-    FilterResult matches(Item item);
-
+    Boolean matches(Item item);
     Filter and(Filter another);
-
     Filter or(Filter another);
 }

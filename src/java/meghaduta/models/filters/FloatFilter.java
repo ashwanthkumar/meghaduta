@@ -1,20 +1,23 @@
-package meghaduta.filters;
+package meghaduta.models.filters;
 
 import meghaduta.models.Item;
 import meghaduta.models.Operator;
 
-public class IntFilter extends AbstractFilter<Integer> {
+/**
+ * Created by salaikumar on 19/9/15.
+ */
+public class FloatFilter extends AbstractFilter<Float> {
 
-    public IntFilter(String attribute, Operator operator, Integer filterValue, Subscription subscription) {
+    protected FloatFilter(String attribute, Operator operator, Float filterValue, Subscription subscription) {
         super(attribute, operator, filterValue);
     }
 
     @Override
     public Boolean matches(Item item) {
-       return false;
+        return false;
     }
 
-    private boolean evaluate(Integer eventValue) {
+    private boolean evaluate(Float eventValue) {
         switch (operator) {
             case GE: return eventValue >= filterValue;
             case LE: return eventValue <= filterValue;
