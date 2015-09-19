@@ -2,6 +2,7 @@ package meghaduta.filters;
 
 import meghaduta.models.Item;
 import meghaduta.models.Operator;
+import meghaduta.models.Subscription;
 
 public class IntFilter extends AbstractFilter<Integer> {
 

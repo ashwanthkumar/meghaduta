@@ -7,7 +7,7 @@ import java.io.IOException;
 public class LocalFileReader implements Reader {
 
     private BufferedReader reader;
-    private boolean hasMore = false;
+    private boolean hasMore = true;
 
     @Override
     public void init(String fileName) throws IOException {

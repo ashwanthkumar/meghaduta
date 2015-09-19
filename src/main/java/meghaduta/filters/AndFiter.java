@@ -1,5 +1,6 @@
 package meghaduta.filters;
 
+import meghaduta.models.Filter;
 import meghaduta.models.Item;
 
 public class AndFiter extends AbstractFilter<Void> {

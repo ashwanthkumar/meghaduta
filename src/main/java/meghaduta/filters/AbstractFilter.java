@@ -1,5 +1,6 @@
 package meghaduta.filters;
 
+import meghaduta.models.Filter;
 import meghaduta.models.Operator;
 
 abstract public class AbstractFilter<T> implements Filter {

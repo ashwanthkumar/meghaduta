@@ -34,13 +34,13 @@ public class Event2Item extends BaseRichBolt {
         try {
             Event event = (Event) tuple.getValue(0);
             Item item = store.get(event.getItemId());
-            collector.emit(Lists.<Object>of(item));
+            collector.emit(Lists.<Object>of(item, event));
         } catch (Exception ignored) {
         }
     }
 
     @Override
     public void declareOutputFields(OutputFieldsDeclarer outputFieldsDeclarer) {
-        outputFieldsDeclarer.declare(new Fields("item"));
+        outputFieldsDeclarer.declare(new Fields("item", "event"));
     }
 }
