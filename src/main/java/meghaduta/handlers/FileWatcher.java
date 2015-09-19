@@ -3,13 +3,11 @@ package meghaduta.handlers;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
-import java.util.logging.Logger;
 
 import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
 
 public class FileWatcher {
 
-    private WatchKey key;
     private WatchService watcher;
     private NewFileCreatedHandler handler;
 
@@ -24,7 +22,7 @@ public class FileWatcher {
     }
 
     public void handle() {
-        key = watcher.poll();
+        WatchKey key = watcher.poll();
         if (key != null) {
             for (WatchEvent<?> event : key.pollEvents()) {
                 File changedFile = new File(event.context().toString());
