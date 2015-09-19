@@ -1,5 +1,7 @@
 package meghaduta.parser;
 
+import java.io.IOException;
+
 public interface Parser<T> {
-    T parse(String input);
+    T parseFile(String input) throws IOException;
 }
