@@ -39,4 +39,11 @@ public interface Store {
      * @throws Exception
      */
     Item get(String itemId) throws Exception;
+
+    /***
+     * Called once during application shutdown
+     *
+     * @throws Exception
+     */
+    void close() throws Exception;
 }

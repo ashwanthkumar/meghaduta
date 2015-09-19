@@ -21,4 +21,25 @@ public class Item {
         this.attributes = attributes;
         return this;
     }
+
+    public String getItemId() {
+        return itemId;
+    }
+
+    public long getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public Map<String, String> getAttributes() {
+        return attributes;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "itemId='" + itemId + '\'' +
+                ", lastUpdated=" + lastUpdated +
+                ", attributes=" + attributes +
+                '}';
+    }
 }
