@@ -39,7 +39,9 @@ public class RedisStore implements Store {
     @Override
     public Item get(String itemId) throws Exception {
         String itemAsJson = db.get(itemId);
-        return JsonUtil.fromJson(itemAsJson, Item.class);
+        // FIXME - This is really really ugly! Yuck >.<
+        if(StringUtils.isNotEmpty(itemAsJson)) return JsonUtil.fromJson(itemAsJson, Item.class);
+        else return null;
     }
 
     @Override

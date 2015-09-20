@@ -11,6 +11,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.HashMap;
 import java.util.Map;
 
 @Path("/{id}")
@@ -32,7 +33,12 @@ public class QueryResource {
     @Timed
     public Map<String, String> query(@PathParam("id") String id) {
         try {
-            return store.get(id).getAttributes();
+            Item item = store.get(id);
+            if(item != null) {
+                return item.getAttributes();
+            } else {
+                return new HashMap<String, String>();
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
