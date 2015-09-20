@@ -1,6 +1,8 @@
 package meghaduta.config;
 
-public class MDConfig {
+import java.io.Serializable;
+
+public class MDConfig implements Serializable {
     // Store related Config
     private String storeImpl;
     private String dbLocation;

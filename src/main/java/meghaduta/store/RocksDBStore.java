@@ -4,9 +4,9 @@ import meghaduta.models.Event;
 import meghaduta.models.Item;
 import meghaduta.config.MDConfig;
 import org.apache.commons.lang.StringUtils;
-import org.rocksdb.RocksDB;
-import org.rocksdb.RocksIterator;
+import org.rocksdb.*;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,7 +26,9 @@ public class RocksDBStore implements Store {
     @Override
     public void init(MDConfig config) throws Exception {
         dbLocation = config.getDBLocation();
-        db = RocksDB.open(dbLocation);
+        Options options = new Options();
+        options.setCreateIfMissing(true);
+        db = RocksDB.open(options, new File(dbLocation).getAbsolutePath());
     }
 
     @Override
