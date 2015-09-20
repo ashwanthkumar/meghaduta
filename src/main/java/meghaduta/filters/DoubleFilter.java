@@ -5,7 +5,7 @@ import meghaduta.models.Operator;
 
 public class DoubleFilter extends AbstractFilter<Double> {
 
-    protected DoubleFilter(String attribute, Operator operator, Double filterValue) {
+    public DoubleFilter(String attribute, Operator operator, Double filterValue) {
         super(attribute, operator, filterValue);
     }
 

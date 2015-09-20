@@ -10,7 +10,7 @@ import java.util.Date;
 
 public class DateFilter extends AbstractFilter <Date>{
 
-    protected DateFilter(String attribute, Operator operator, Date filterValue) {
+    public DateFilter(String attribute, Operator operator, Date filterValue) {
         super(attribute, operator, filterValue);
     }
 
