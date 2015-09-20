@@ -35,6 +35,10 @@ public class Item {
         return attributes;
     }
 
+    public void update(Event event) {
+        this.attributes.put(event.getName(), event.getValue());
+    }
+
     @Override
     public String toString() {
         return "Item{" +

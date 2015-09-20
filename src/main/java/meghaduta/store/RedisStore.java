@@ -31,7 +31,8 @@ public class RedisStore implements Store {
         } else {
             item = new Item();
         }
-        item.getAttributes().put(event.getName(), event.getValue());
+        item.update(event);
+        item.setLastUpdated(event.getTimestamp());
         db.set(event.getItemId(), JsonUtil.toJson(item));
     }
 

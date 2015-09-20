@@ -25,11 +25,16 @@ public class MeghaDutaTopology {
         TopologyBuilder builder = new TopologyBuilder();
 
         builder.setSpout("filewatcher", new LocalFileSpout(appConfig.getSharedFolder()), 1);
-        builder.setBolt("fileprocessor", new FileProcessor(appConfig.getSharedFolder()), 5).shuffleGrouping("filewatcher");
-        builder.setBolt("lineprocessor", new LineProcessor(), 5).shuffleGrouping("fileprocessor");
-        builder.setBolt("event2item", new Event2Item(appConfig), 1).shuffleGrouping("lineprocessor"); // FIXME - bottle-neck
-        builder.setBolt("matchsubscriptions", new MatchSubscription(subscriptions), 5).shuffleGrouping("event2item");
-        builder.setBolt("notifier", new NotifierBolt(new FileNotifier(appConfig.getNotifierFileName())), 5).shuffleGrouping("matchsubscriptions");
+        builder.setBolt("fileprocessor", new FileProcessor(appConfig.getSharedFolder()), 5)
+                .shuffleGrouping("filewatcher");
+        builder.setBolt("lineprocessor", new LineProcessor(), 5)
+                .shuffleGrouping("fileprocessor");
+        builder.setBolt("event2item", new Event2Item(appConfig), 1)
+                .shuffleGrouping("lineprocessor"); // FIXME - bottle-neck
+        builder.setBolt("matchsubscriptions", new MatchSubscription(subscriptions), 5)
+                .shuffleGrouping("event2item");
+        builder.setBolt("notifier", new NotifierBolt(new FileNotifier(appConfig.getNotifierFileName())), 5)
+                .shuffleGrouping("matchsubscriptions");
 
         Config conf = new Config();
         conf.setDebug(true);

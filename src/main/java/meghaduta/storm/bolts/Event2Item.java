@@ -47,10 +47,12 @@ public class Event2Item extends BaseRichBolt {
     public void execute(Tuple tuple) {
         try {
             Event event = (Event) tuple.getValue(0);
-            store.put(event);
-
             Item item = store.get(event.getItemId());
-            collector.emit(Lists.<Object>of(item, event));
+            if (event.getTimestamp() > item.getLastUpdated()) {
+                item.update(event);
+                store.put(event);
+                collector.emit(Lists.<Object>of(item, event));
+            }
         } catch (Exception ex) {
             LOG.error(ex.getMessage(), ex);
         }
