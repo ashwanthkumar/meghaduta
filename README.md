@@ -1,4 +1,27 @@
 # Meghaduta - Large scale configurable notification system
+
+### Design
+File Changes are monitored through a Storm topology that propogates the events. 
+![Meghaduta Storm Topology](https://raw.githubusercontent.com/ashwanthkumar/meghaduta/master/docs/storm_topology.png)
+
+The event gets propagated through each stage where the item is built incrementally and finally the notifier is notified (pluggable).
+
+#### Known issues
+- We don't have any deterministic way to ensure updates across events
+
+### Getting Started
+```bash
+$ mvn clean package
+
+# To start the storm Topology
+$ java -cp target/meghaduta-1.0.0-SNAPSHOT.jar meghaduta.storm.MeghaDutaTopology
+
+# To start the HTTP Service
+$java -cp target/meghaduta-1.0.0-SNAPSHOT.jar meghaduta.service.MeghaDutaService -server
+```
+
+<hr />
+
 ### Problem Description
 The goal is to build a configurable notification system, which receives inputs in a CSV file and notifies its subscribers based on the condition set.
 
