@@ -1,7 +1,10 @@
 package meghaduta.filters;
 
+import in.ashwanthkumar.utils.collections.Lists;
 import meghaduta.models.Filter;
 import meghaduta.models.Operator;
+
+import java.util.List;
 
 abstract public class AbstractFilter<T> implements Filter {
     protected String attribute;
@@ -43,5 +46,10 @@ abstract public class AbstractFilter<T> implements Filter {
         result = 31 * result + (operator != null ? operator.hashCode() : 0);
         result = 31 * result + (filterValue != null ? filterValue.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public List<String> getAttributes() {
+        return Lists.of(attribute);
     }
 }

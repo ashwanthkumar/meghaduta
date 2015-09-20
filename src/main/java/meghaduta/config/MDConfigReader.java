@@ -17,7 +17,9 @@ public class MDConfigReader {
         return new MDConfig()
                 .setStoreImpl(config.getString("store-type"))
                 .setDBLocation(config.getString("db-location"))
-                .setSharedFolder(config.getString("shared-folder"));
+                .setSharedFolder(config.getString("shared-folder"))
+                .setNotifierImpl(config.getString("notifier-type"))
+                .setNotifierFileName(config.getString("notify-output-file"));
     }
 
 

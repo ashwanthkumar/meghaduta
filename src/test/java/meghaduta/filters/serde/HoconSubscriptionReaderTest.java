@@ -18,7 +18,7 @@ public class HoconSubscriptionReaderTest {
     @Test
     public void shouldReadSubscriptionsFromHocon() {
         HoconSubscriptionReader reader = new HoconSubscriptionReader();
-        List<Subscription> subscriptions = reader.read();
+        List<Subscription> subscriptions = reader.load();
 
         assertThat(subscriptions.size(), is(1));
 

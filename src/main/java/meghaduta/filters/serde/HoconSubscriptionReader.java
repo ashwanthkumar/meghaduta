@@ -16,7 +16,11 @@ import meghaduta.models.Subscription;
 import java.util.List;
 
 public class HoconSubscriptionReader {
-    public List<Subscription> read() {
+    public static List<Subscription> read() {
+        return new HoconSubscriptionReader().load();
+    }
+
+    public List<Subscription> load() {
         Config config = ConfigFactory.load("subscriptions");
         List<Config> subscriptions = (List<Config>) config.getConfigList("subscriptions");
         return Lists.map(subscriptions, new Function<Config, Subscription>() {

@@ -9,6 +9,9 @@ public class MDConfig implements Serializable {
 
     private String sharedFolder;
 
+    private String notifierImpl;
+    private String notifierFileName;
+
     public MDConfig setStoreImpl(String storeImpl) {
         this.storeImpl = storeImpl;
         return this;
@@ -24,6 +27,16 @@ public class MDConfig implements Serializable {
         return this;
     }
 
+    public MDConfig setNotifierFileName(String notifierFileName) {
+        this.notifierFileName = notifierFileName;
+        return this;
+    }
+
+    public MDConfig setNotifierImpl(String notifierImpl) {
+        this.notifierImpl = notifierImpl;
+        return this;
+    }
+
     public String getStoreImpl() {
         return storeImpl;
     }
@@ -34,5 +47,13 @@ public class MDConfig implements Serializable {
 
     public String getSharedFolder() {
         return sharedFolder;
+    }
+
+    public String getNotifierFileName() {
+        return notifierFileName;
+    }
+
+    public String getNotifierImpl() {
+        return notifierImpl;
     }
 }
