@@ -16,7 +16,8 @@ public class MDConfigReader {
     public MDConfig toMDConfig(Config config) {
         return new MDConfig()
                 .setStoreImpl(config.getString("store-type"))
-                .setDBLocation(config.getString("db-location"));
+                .setDBLocation(config.getString("db-location"))
+                .setSharedFolder(config.getString("shared-folder"));
     }
 
 

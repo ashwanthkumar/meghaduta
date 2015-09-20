@@ -6,12 +6,16 @@ import backtype.storm.StormSubmitter;
 import backtype.storm.testing.TestWordSpout;
 import backtype.storm.topology.TopologyBuilder;
 import backtype.storm.utils.Utils;
+import meghaduta.config.MDConfig;
+import meghaduta.config.MDConfigReader;
+import meghaduta.storm.spouts.LocalFileSpout;
 
 public class MeghaDutaTopology {
     public static void main(String[] args) throws Exception {
+        MDConfig appConfig = MDConfigReader.load();
         TopologyBuilder builder = new TopologyBuilder();
 
-        builder.setSpout("word", new TestWordSpout(), 10);
+        builder.setSpout("filereader", new LocalFileSpout(appConfig.getSharedFolder()), 10);
 //        builder.setBolt("exclaim1", new ExclamationBolt(), 3).shuffleGrouping("word");
 //        builder.setBolt("exclaim2", new ExclamationBolt(), 2).shuffleGrouping("exclaim1");
 
