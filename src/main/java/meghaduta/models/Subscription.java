@@ -27,4 +27,8 @@ public class Subscription {
     public String getNotifier() {
         return notifier;
     }
+
+    public void setNotifier(String notifier) {
+        this.notifier = notifier;
+    }
 }
