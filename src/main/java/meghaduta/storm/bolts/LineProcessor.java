@@ -8,7 +8,7 @@ import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
 import in.ashwanthkumar.utils.collections.Lists;
 import meghaduta.models.Event;
-import meghaduta.parser.NoopParser;
+import meghaduta.parser.NullParser;
 import meghaduta.parser.Parser;
 
 import java.util.Map;
@@ -18,13 +18,13 @@ import java.util.Map;
  */
 public class LineProcessor extends BaseRichBolt {
     OutputCollector collector;
-    private Parser parser;
+    private Parser<Event> parser;
 
     @Override
     public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) {
         this.collector = outputCollector;
         // FIXME - Use a proper parser
-        parser = new NoopParser();
+        parser = new NullParser<Event>();
     }
 
     @Override

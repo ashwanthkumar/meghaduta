@@ -9,6 +9,7 @@ import backtype.storm.utils.Utils;
 import meghaduta.config.MDConfig;
 import meghaduta.config.MDConfigReader;
 import meghaduta.storm.bolts.FileProcessor;
+import meghaduta.storm.bolts.LineProcessor;
 import meghaduta.storm.spouts.LocalFileSpout;
 
 public class MeghaDutaTopology {
@@ -18,6 +19,7 @@ public class MeghaDutaTopology {
 
         builder.setSpout("filewatcher", new LocalFileSpout(appConfig.getSharedFolder()), 1);
         builder.setBolt("fileprocessor", new FileProcessor(appConfig.getSharedFolder()), 5).shuffleGrouping("filewatcher");
+        builder.setBolt("lineprocessor", new LineProcessor(), 5).shuffleGrouping("fileprocessor");
 //        builder.setBolt("exclaim2", new ExclamationBolt(), 2).shuffleGrouping("exclaim1");
 
         Config conf = new Config();
