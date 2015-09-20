@@ -1,5 +1,9 @@
 # Meghaduta - Large scale configurable notification system
 
+### Dependencies
+- JDK7
+- Redis
+
 ### Design
 File Changes are monitored through a Storm topology that propogates the events. 
 ![Meghaduta Storm Topology](https://raw.githubusercontent.com/ashwanthkumar/meghaduta/master/docs/storm_topology.png)
