@@ -36,6 +36,7 @@ public class Item {
     }
 
     public void update(Event event) {
+        this.itemId = event.getItemId();
         this.attributes.put(event.getName(), event.getValue());
     }
 
