@@ -1,11 +1,12 @@
 package meghaduta.models;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Item {
     private String itemId;
     private long lastUpdated;
-    private Map<String, String> attributes;
+    private Map<String, String> attributes = new HashMap<String, String>();
 
     public Item setItemId(String itemId) {
         this.itemId = itemId;
