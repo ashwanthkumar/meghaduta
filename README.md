@@ -38,6 +38,16 @@ Sample output JSON would be
 }
 ```
 
+Sample notification-file.log
+```
+[1442738940456] Notifing subscriber-test about Event{itemId='13579', name='title', value='freakonomics', timestamp=1442738934000} from 
+item=Item{itemId='13579', lastUpdated=1442738934000, attributes={publisher=William Morrow, authors=Levitt & Dubner, title=freakonomics}}
+[1442738940462] Notifing subscriber1 about Event{itemId='13579', name='release date', value='20-09-2011', timestamp=1442738934000} from 
+item=Item{itemId='13579', lastUpdated=1442738934000, attributes={publisher=William Morrow, authors=Levitt & Dubner, title=freakonomics, list price=7, release date=20-09-2011}}
+[1442738940463] Notifing subscriber2 about Event{itemId='1248', name='list price', value='10', timestamp=1442738934000} from 
+item=Item{itemId='1248', lastUpdated=1442738934000, attributes={title=Effective Java, authors=Joshua Bloch, publisher=Addison-Wesley, list price=10}}
+```
+
 ### Subscription Configuration
 ```hocon
 # Add all your subscriptions in here. The format is as follows
