@@ -37,11 +37,13 @@ public class LineProcessor extends BaseRichBolt {
     @Override
     public void execute(Tuple tuple) {
         String line = tuple.getStringByField("line");
+        final Long ts = tuple.getLongByField("timestamp");
         try {
             List<Event> events = parser.parse(line);
             Iterables.foreach(events, new Function<Event, Void>() {
                 @Override
                 public Void apply(Event input) {
+                    input.setTimestamp(String.valueOf(ts));
                     collector.emit(Lists.<Object>of(input));
                     return null;
                 }

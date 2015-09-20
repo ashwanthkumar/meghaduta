@@ -47,15 +47,17 @@ public class FileProcessor extends BaseRichBolt {
         LocalFileReader reader = new LocalFileReader();
         try {
             LOG.info("Opening file {}", fileName);
+            File source = new File(fileName);
+            long modifiedTimestamp = source.lastModified();
+
             reader.init(fileName);
             // FIXME - Move this to an iterator model where we can read multiple files in a lazy fashion
             while (reader.hasLines()) {
-                collector.emit(Lists.<Object>of(reader.readLine()));
+                collector.emit(Lists.<Object>of(reader.readLine(), modifiedTimestamp));
             }
             reader.close();
 
             File parent = new File(directoryBeingWatched).getParentFile();
-            File source = new File(fileName);
             File destFile = new File(String.format("%s/%s/%d_%s", parent.getAbsolutePath(), OUT, System.currentTimeMillis(), source.getName()));
             LOG.info("Moving {} to {}", source, destFile);
             FileUtils.moveFile(source, destFile);
@@ -66,6 +68,6 @@ public class FileProcessor extends BaseRichBolt {
 
     @Override
     public void declareOutputFields(OutputFieldsDeclarer outputFieldsDeclarer) {
-        outputFieldsDeclarer.declare(new Fields("line"));
+        outputFieldsDeclarer.declare(new Fields("line", "timestamp"));
     }
 }
