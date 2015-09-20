@@ -27,6 +27,16 @@ The HTTP service runs on port 8080 by default and you can query the data
 | --- | --- |
 | /{id} | id - itemId to query for |
 
+Sample output JSON would be
+```json
+{
+    "publisher": "William Morrow",
+    "authors": "Levitt & Dubner",
+    "title": "freakonomics",
+    "list price": "7",
+    "release date": "20-09-2011"
+}
+```
 
 ### Subscription Configuration
 The subscribers.conf is of the following
