@@ -21,6 +21,13 @@ $ java -cp target/meghaduta-1.0.0-SNAPSHOT.jar meghaduta.storm.MeghaDutaTopology
 $java -cp target/meghaduta-1.0.0-SNAPSHOT.jar meghaduta.service.MeghaDutaService -server
 ```
 
+The HTTP service runs on port 8080 by default and you can query the data
+
+| API | Operation |
+| --- | --- |
+| /{id} | id - itemId to query for |
+
+
 ### Subscription Configuration
 The subscribers.conf is of the following
 ```hocon
