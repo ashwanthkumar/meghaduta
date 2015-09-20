@@ -39,18 +39,52 @@ Sample output JSON would be
 ```
 
 ### Subscription Configuration
-The subscribers.conf is of the following
 ```hocon
- {
-  notifier = "whom should I notify?"
-  filters = [{
-    name = "attribute name"
-    type = "type of the attribute" # accepted values - int, string, date
-    operator = "eq" # accepted values - eq, gt, lt, ge, le
-    value = "value of the attribute to check"
-  }]
- }
+# Add all your subscriptions in here. The format is as follows
+#  {
+#   notifier = "whom should I notify?"
+#   filters = [{
+#     name = "attribute name"
+#     type = "type of the attribute" # accepted values - int, string, date
+#     operator = "eq" # accepted values - eq, gt, lt, ge, le
+#     value = "value of the attribute to check"
+#   }]
+#  }
+#
+# You can specify multiple filters and by default we'll always AND them.
+#
+# FIXME - Move this to a store so that we can in-corporate updates while the system is running
 
+subscriptions = [{
+  notifier = "subscriber-test"
+  filters = [{
+    name = "title"
+    type = "string"
+    operator = "eq"
+    value = "freakonomics"
+  }]
+}, {
+  notifier = "subscriber1"
+  filters = [{
+    name = "release date"
+    type = "date"
+    operator = "gt"
+    value = "01-01-2000"
+  }]
+}, {
+  notifier = "subscriber2"
+  filters = [{
+    name = "publisher"
+    type = "string"
+    operator = "eq"
+    value = "Addison-Wesley"
+  }, {
+    name = "list price"
+    type = "int"
+    operator = "ge"
+    value = "10"
+  }]
+}]
 # You can specify multiple filters and by default we'll always AND them.
 ```
 
