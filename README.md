@@ -10,9 +10,6 @@ File Changes are monitored through a Storm topology that propogates the events.
 
 The event gets propagated through each stage where the item is built incrementally and finally the notifier is notified (pluggable).
 
-#### Known issues
-- We don't have any deterministic way to ensure updates across events
-
 ### Getting Started
 ```bash
 $ mvn clean package
