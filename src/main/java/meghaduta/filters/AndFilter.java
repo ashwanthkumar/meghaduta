@@ -3,12 +3,12 @@ package meghaduta.filters;
 import meghaduta.models.Filter;
 import meghaduta.models.Item;
 
-public class AndFiter extends AbstractFilter<Void> {
+public class AndFilter extends AbstractFilter<Void> {
 
     private Filter left;
     private Filter right;
 
-    public AndFiter(Filter left, Filter right) {
+    public AndFilter(Filter left, Filter right) {
         super(null, null,null);
         this.left = left;
         this.right = right;
@@ -16,6 +16,6 @@ public class AndFiter extends AbstractFilter<Void> {
 
     @Override
     public Boolean matches(Item item) {
-          return false;
+        return left.matches(item) && right.matches(item);
     }
 }

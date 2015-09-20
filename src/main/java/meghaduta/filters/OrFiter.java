@@ -15,6 +15,6 @@ public class OrFiter extends AbstractFilter<Void> {
 
     @Override
     public Boolean matches(Item item) {
-        return false;
+        return left.matches(item) || right.matches(item);
     }
 }

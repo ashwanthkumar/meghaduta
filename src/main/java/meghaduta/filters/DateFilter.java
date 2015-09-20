@@ -8,7 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DateFilter extends AbstractFilter <Date>{
+public class DateFilter extends AbstractFilter<Date> {
 
     public DateFilter(String attribute, Operator operator, Date filterValue) {
         super(attribute, operator, filterValue);
@@ -16,15 +16,14 @@ public class DateFilter extends AbstractFilter <Date>{
 
     @Override
     public Boolean matches(Item item) {
-        Date eventValue = null;
         if (item.getAttributes().containsKey(attribute)) {
             DateFormat dateFormat = new SimpleDateFormat("DD-MM-YYYY");
             try {
-               eventValue = dateFormat.parse(item.getAttributes().get(attribute));
+                Date eventValue = dateFormat.parse(item.getAttributes().get(attribute));
+                return evaluate(eventValue);
             } catch (ParseException e) {
-                e.printStackTrace();
+                // Use Logger
             }
-            return evaluate(eventValue);
         }
         return false;
     }
@@ -33,14 +32,11 @@ public class DateFilter extends AbstractFilter <Date>{
         int result = eventValue.compareTo(filterValue);
         switch (operator) {
             case EQ:
-                if (result == 0)
-                    return true;
+                return (result == 0);
             case GT:
-                if (result > 0)
-                    return true;
+                return (result > 0);
             case LT:
-               if (result < 0)
-                   return true;
+                return (result < 0);
         }
         return false;
     }

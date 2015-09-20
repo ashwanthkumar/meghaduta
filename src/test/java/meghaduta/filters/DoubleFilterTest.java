@@ -22,7 +22,7 @@ public class DoubleFilterTest {
         item.setAttributes(attributes);
 
         DoubleFilter doubleFilter = new DoubleFilter("list price", Operator.LT,Double.valueOf(35));
-        assertThat(doubleFilter.matches(item), is(false));
+        assertThat(doubleFilter.matches(item), is(true));
 
     }
 

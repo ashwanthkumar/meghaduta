@@ -3,6 +3,9 @@ package meghaduta.filters;
 import meghaduta.models.Item;
 import meghaduta.models.Operator;
 
+
+import java.util.Map;
+
 public class FloatFilter extends AbstractFilter<Float> {
 
     public FloatFilter(String attribute, Operator operator, Float filterValue) {
@@ -11,6 +14,11 @@ public class FloatFilter extends AbstractFilter<Float> {
 
     @Override
     public Boolean matches(Item item) {
+        Map<String, String> attributes = item.getAttributes();
+        if (attributes.containsKey(attribute)){
+            Float value = Float.valueOf(attributes.get(attribute));
+            return evaluate(value);
+        }
         return false;
     }
 

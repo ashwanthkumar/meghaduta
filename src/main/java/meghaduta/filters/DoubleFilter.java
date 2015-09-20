@@ -3,6 +3,8 @@ package meghaduta.filters;
 import meghaduta.models.Item;
 import meghaduta.models.Operator;
 
+import java.util.Map;
+
 public class DoubleFilter extends AbstractFilter<Double> {
 
     public DoubleFilter(String attribute, Operator operator, Double filterValue) {
@@ -11,6 +13,11 @@ public class DoubleFilter extends AbstractFilter<Double> {
 
     @Override
     public Boolean matches(Item item) {
+        Map<String, String> attributes = item.getAttributes();
+        if (attributes.containsKey(attribute)){
+            Double value = Double.valueOf(attributes.get(attribute));
+            return evaluate(value);
+        }
       return false;
     }
 

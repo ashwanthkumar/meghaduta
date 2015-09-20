@@ -3,6 +3,9 @@ package meghaduta.filters;
 import meghaduta.models.Item;
 import meghaduta.models.Operator;
 
+import java.util.Map;
+
+
 public class IntFilter extends AbstractFilter<Integer> {
 
     public IntFilter(String attribute, Operator operator, Integer filterValue) {
@@ -11,7 +14,12 @@ public class IntFilter extends AbstractFilter<Integer> {
 
     @Override
     public Boolean matches(Item item) {
-       return false;
+        Map<String, String> attributes = item.getAttributes();
+        if (attributes.containsKey(attribute)){
+           Integer value = Integer.valueOf(attributes.get(attribute));
+           return evaluate(value);
+        }
+        return false;
     }
 
     private boolean evaluate(Integer eventValue) {

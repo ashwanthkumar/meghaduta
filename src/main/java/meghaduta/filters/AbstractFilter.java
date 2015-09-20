@@ -16,7 +16,7 @@ abstract public class AbstractFilter<T> implements Filter {
 
     @Override
     public Filter and(Filter another) {
-        return new AndFiter(this, another);
+        return new AndFilter(this, another);
     }
 
     @Override
