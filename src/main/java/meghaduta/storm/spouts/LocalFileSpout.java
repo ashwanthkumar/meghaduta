@@ -37,6 +37,7 @@ public class LocalFileSpout extends BaseRichSpout {
             watcher = new FileWatcher(new NewFileCreatedHandler() {
                 @Override
                 public void handle(File file) {
+                    LOG.info("new file {} was added", file.getAbsolutePath());
                     collector.emit(Lists.<Object>of(file.getAbsolutePath()));
                 }
             });

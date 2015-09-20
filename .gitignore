@@ -1,3 +1,4 @@
 *.iml
 .idea/
 target/
+shared-folder/OUT

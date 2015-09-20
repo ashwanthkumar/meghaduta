@@ -7,7 +7,7 @@ import java.io.IOException;
 public class LocalFileReader implements Reader {
 
     private BufferedReader reader;
-    private boolean hasMore = true;
+    private String line = null;
 
     @Override
     public void init(String fileName) throws IOException {
@@ -16,14 +16,15 @@ public class LocalFileReader implements Reader {
 
     @Override
     public String readLine() throws IOException {
-        String line = reader.readLine();
-        hasMore = line != null;
         return line;
     }
 
     @Override
     public boolean hasLines() {
-        return hasMore;
+        try {
+            line = reader.readLine();
+        } catch (IOException ignored) {}
+        return line != null;
     }
 
     @Override
