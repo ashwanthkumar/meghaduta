@@ -37,6 +37,22 @@ The subscribers.conf is of the following
 # You can specify multiple filters and by default we'll always AND them.
 ```
 
+### Configuration
+```
+meghaduta {
+  # Store implementation - redis, rocksdb (experimental)
+  store-type = "redis"
+  db-location = "localhost"
+
+  # Relative to the project root - can also be an absolute path
+  shared-folder = "shared-folder/IN"
+
+  # Notifier implementation
+  notifier-type = "file"
+  notify-output-file = "notifications.log"
+}
+```
+
 <hr />
 
 ### Problem Description
