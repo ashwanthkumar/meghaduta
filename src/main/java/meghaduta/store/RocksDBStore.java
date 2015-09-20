@@ -61,15 +61,18 @@ public class RocksDBStore implements Store {
     public Item buildFromIterator(String itemId, RocksIterator iterator) {
         Map<String, String> attributes = new HashMap<String, String>();
         Long lastUpdated = 0L;
-        while (iterator.isValid()) {
-            String name = stripIdPrefix(itemId, new String(iterator.key()));
+        String key = new String(iterator.key());
+        while (iterator.isValid() && key.startsWith(itemId)) {
+            String name = stripIdPrefix(itemId, key);
             String value = new String(iterator.value());
             attributes.put(name, value);
             iterator.next();
+            key = new String(iterator.key());
         }
 
         if (attributes.containsKey(LAST_UPDATED_AT_KEY)) {
             lastUpdated = Long.parseLong(attributes.get(LAST_UPDATED_AT_KEY));
+            attributes.remove(LAST_UPDATED_AT_KEY);
         }
         return new Item().setItemId(itemId).setAttributes(attributes).setLastUpdated(lastUpdated);
     }

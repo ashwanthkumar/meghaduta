@@ -1,5 +1,6 @@
 package meghaduta.parser;
 
+import in.ashwanthkumar.utils.collections.Lists;
 import in.ashwanthkumar.utils.func.Function;
 import meghaduta.models.Event;
 import org.apache.commons.csv.CSVFormat;
@@ -11,10 +12,10 @@ import java.util.List;
 
 import static in.ashwanthkumar.utils.collections.Lists.map;
 
-public class CSVFileParser implements Parser<List<Event>> {
+public class CSV implements Parser<List<Event>> {
     @Override
-    public List<Event> parseFile(String input) throws IOException {
-        return map(CSVParser.parse(input, CSVFormat.DEFAULT), parseCSV());
+    public List<Event> parse(String input) throws IOException {
+        return Lists.map(CSVParser.parse(input, CSVFormat.DEFAULT), parseCSV());
     }
 
     private Function<CSVRecord, Event> parseCSV() {

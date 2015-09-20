@@ -10,9 +10,9 @@ import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class CSVFileParserTest {
+public class CSVTest {
 
-    CSVFileParser parse = new CSVFileParser();
+    CSV parse = new CSV();
     String value;
 
     @Before
@@ -22,7 +22,7 @@ public class CSVFileParserTest {
 
     @Test
     public void testParseFile() throws Exception{
-        List<Event> events =  parse.parseFile(value);
+        List<Event> events =  parse.parse(value);
         Event expectedEvent = new Event()
                 .setItemId("13579")
                 .setName("title")
