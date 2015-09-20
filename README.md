@@ -21,6 +21,22 @@ $ java -cp target/meghaduta-1.0.0-SNAPSHOT.jar meghaduta.storm.MeghaDutaTopology
 $java -cp target/meghaduta-1.0.0-SNAPSHOT.jar meghaduta.service.MeghaDutaService -server
 ```
 
+### Subscription Configuration
+The subscribers.conf is of the following
+```hocon
+ {
+  notifier = "whom should I notify?"
+  filters = [{
+    name = "attribute name"
+    type = "type of the attribute" # accepted values - int, string, date
+    operator = "eq" # accepted values - eq, gt, lt, ge, le
+    value = "value of the attribute to check"
+  }]
+ }
+
+# You can specify multiple filters and by default we'll always AND them.
+```
+
 <hr />
 
 ### Problem Description
@@ -84,5 +100,5 @@ publisher=William Morrow
 ### Technology
 
 Programming Language: Java, but using C#/ C++ is acceptable 
-Other Technologies: AWS
 
+Other Technologies: AWS
