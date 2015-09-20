@@ -30,7 +30,6 @@ public class MeghaDutaTopology {
         builder.setBolt("event2item", new Event2Item(appConfig), 1).shuffleGrouping("lineprocessor"); // FIXME - bottle-neck
         builder.setBolt("matchsubscriptions", new MatchSubscription(subscriptions), 5).shuffleGrouping("event2item");
         builder.setBolt("notifier", new NotifierBolt(new FileNotifier(appConfig.getNotifierFileName())), 5).shuffleGrouping("matchsubscriptions");
-//        builder.setBolt("exclaim2", new ExclamationBolt(), 2).shuffleGrouping("exclaim1");
 
         Config conf = new Config();
         conf.setDebug(true);
