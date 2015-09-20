@@ -7,8 +7,10 @@ import backtype.storm.topology.base.BaseRichBolt;
 import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
+import in.ashwanthkumar.utils.collections.Iterables;
 import in.ashwanthkumar.utils.collections.Lists;
 import in.ashwanthkumar.utils.func.Predicate;
+import in.ashwanthkumar.utils.lang.StringUtils;
 import meghaduta.models.Event;
 import meghaduta.models.Item;
 import meghaduta.models.Subscription;
@@ -40,9 +42,16 @@ public class MatchSubscription extends BaseRichBolt {
 
         List<Subscription> matchedSubscriptions = Lists.filter(subscriptions, new Predicate<Subscription>() {
             @Override
-            public Boolean apply(Subscription input) {
+            public Boolean apply(Subscription subscription) {
                 // Raise a notification only if the item that matches the condition has some changes via the event
-                return input.matches(item) && input.getFilter().getAttributes().contains(event.getName());
+                List<String> attributesInFilter = subscription.getFilter().getAttributes();
+                boolean filterAttributesPresentInItem = Iterables.forall(attributesInFilter, new Predicate<String>() {
+                    @Override
+                    public Boolean apply(String input) {
+                        return StringUtils.isNotEmpty(item.getAttributes().get(input));
+                    }
+                });
+                return filterAttributesPresentInItem && subscription.matches(item) && attributesInFilter.contains(event.getName());
             }
         });
         if (!matchedSubscriptions.isEmpty()) collector.emit(Lists.of(matchedSubscriptions, event, item));
