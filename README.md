@@ -1,4 +1,4 @@
-# Meghaduta - Large scale configurable notification system
+# Meghaduta
 
 ### Dependencies
 - JDK7
