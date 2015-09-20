@@ -2,7 +2,6 @@ package meghaduta.filters;
 
 import meghaduta.models.Item;
 import meghaduta.models.Operator;
-import meghaduta.models.Subscription;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -11,7 +10,7 @@ import java.util.Date;
 
 public class DateFilter extends AbstractFilter <Date>{
 
-    protected DateFilter(String attribute, Operator operator, Date filterValue, Subscription subscription) {
+    protected DateFilter(String attribute, Operator operator, Date filterValue) {
         super(attribute, operator, filterValue);
     }
 

@@ -2,11 +2,10 @@ package meghaduta.filters;
 
 import meghaduta.models.Item;
 import meghaduta.models.Operator;
-import meghaduta.models.Subscription;
 
 public class StringFilter extends AbstractFilter<String>{
 
-    protected StringFilter(String attribute, Operator operator, String filterValue, Subscription subscription) {
+    protected StringFilter(String attribute, Operator operator, String filterValue) {
         super(attribute, operator, filterValue);
     }
 

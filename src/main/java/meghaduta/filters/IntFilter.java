@@ -2,11 +2,10 @@ package meghaduta.filters;
 
 import meghaduta.models.Item;
 import meghaduta.models.Operator;
-import meghaduta.models.Subscription;
 
 public class IntFilter extends AbstractFilter<Integer> {
 
-    public IntFilter(String attribute, Operator operator, Integer filterValue, Subscription subscription) {
+    public IntFilter(String attribute, Operator operator, Integer filterValue) {
         super(attribute, operator, filterValue);
     }
 
