@@ -6,6 +6,7 @@ import com.typesafe.config.ConfigFactory;
 import in.ashwanthkumar.utils.collections.Lists;
 import in.ashwanthkumar.utils.func.Function;
 import in.ashwanthkumar.utils.lang.tuple.Tuple2;
+import meghaduta.filters.DateFilter;
 import meghaduta.filters.IdentityFilter;
 import meghaduta.filters.IntFilter;
 import meghaduta.filters.StringFilter;
@@ -58,6 +59,8 @@ public class HoconSubscriptionReader {
             return new StringFilter(name, toOperator(operator), value);
         } else if (type.equals("int")) {
             return new IntFilter(name, toOperator(operator), Integer.valueOf(value));
+        }else if (type.equals("date")) {
+            return new DateFilter(name, toOperator(operator), DateFilter.parse(value));
         }
 
         throw new RuntimeException("Invalid type - " + type + " for " + name + " attribute.");
