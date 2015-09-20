@@ -15,7 +15,7 @@ public class MeghaDutaTopology {
         MDConfig appConfig = MDConfigReader.load();
         TopologyBuilder builder = new TopologyBuilder();
 
-        builder.setSpout("filereader", new LocalFileSpout(appConfig.getSharedFolder()), 10);
+        builder.setSpout("filereader", new LocalFileSpout(appConfig.getSharedFolder()), 1);
 //        builder.setBolt("exclaim1", new ExclamationBolt(), 3).shuffleGrouping("word");
 //        builder.setBolt("exclaim2", new ExclamationBolt(), 2).shuffleGrouping("exclaim1");
 
@@ -31,7 +31,7 @@ public class MeghaDutaTopology {
 
             LocalCluster cluster = new LocalCluster();
             cluster.submitTopology("test", conf, builder.createTopology());
-            Utils.sleep(10000);
+            Utils.sleep(60000);
             cluster.killTopology("test");
             cluster.shutdown();
         }
