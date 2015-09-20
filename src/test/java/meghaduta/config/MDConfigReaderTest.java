@@ -13,7 +13,7 @@ public class MDConfigReaderTest {
 
         assertThat(config.getStoreImpl(), is("rocksdb"));
         assertThat(config.getDBLocation(), is("/tmp/meghaduta/rocksdb-test"));
-        assertThat(config.getSharedFolder(), is("shared-folder"));
+        assertThat(config.getSharedFolder(), is("shared-folder/IN"));
     }
 
 }
