@@ -1,3 +1,5 @@
+[![Build Status](https://snap-ci.com/ashwanthkumar/meghaduta/branch/master/build_image)](https://snap-ci.com/ashwanthkumar/meghaduta/branch/master)
+
 # Meghaduta
 
 ### Dependencies
